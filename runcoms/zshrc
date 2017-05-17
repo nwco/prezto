@@ -81,7 +81,7 @@ edn () { mkdir DN ; 7z e -oDN *support-bundle.zip "*/logs/*/hadoop-cmf-*DATANOD*
 eodn () { mkdir DN ; 7z e -oDN *support-bundle.zip "logs/*/hadoop-cmf-*DATANOD*.gz" ;}
 erm () { mkdir RM ; 7z e -oRM *support-bundle.zip "*/logs/*/hadoop-cmf-*RESOURC*.gz" ;}
 eorm () { mkdir RM ; 7z e -oRM *support-bundle.zip "logs/*/hadoop-cmf-*RESOURC*.gz" ;}
-efl () { mkdir RM ; 7z e -oRM *support-bundle.zip "*/logs/*/flume-cmf-*.gz" ;}
+efl () { mkdir RM ; 7z e -oFL *support-bundle.zip "logs/*/flume-cmf-*.gz" ;}
 eofl () { mkdir RM ; 7z e -oRM *support-bundle.zip "logs/*/flume-cmf-*.gz" ;}
 eomm () { mkdir MM ; 7z e -oMM *support-bundle.zip "logs/*/mirrormaker*.gz" ;}
 eok () { mkdir KK ; 7z e -oKK *support-bundle.zip "logs/*/kafka-broker*.gz" ;}
