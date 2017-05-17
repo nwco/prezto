@@ -23,6 +23,7 @@ zstyle ':prezto:*:*' color 'yes'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
+# "prompt" should go last
 zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
@@ -32,6 +33,9 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'git' \
+  'osx' \
+  'history-substring-search' \
   'prompt'
 
 #
@@ -85,6 +89,7 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
+#zstyle ':prezto:module:prompt' theme 'sorin'
 zstyle ':prezto:module:prompt' theme 'sorin'
 
 #

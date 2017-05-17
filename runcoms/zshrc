@@ -11,3 +11,85 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+eval "$(chef shell-init zsh)"
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/nwhite/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables bash completion for gcloud.
+source '/Users/nwhite/google-cloud-sdk/completion.zsh.inc'
+
+# Set Shell options
+setopt extended_glob
+
+# Set JAVA_HOME
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+
+# Set ANT_HOME
+export ANT_HOME=/usr/local/ant
+export PATH=$ANT_HOME/bin:$PATH
+
+# Set Maven environment - M3_HOME
+export M3_HOME=/usr/local/maven
+export PATH=$M3_HOME/bin:$PATH
+
+# Set Anaconda Python in PATH
+export PATH=/Users/nwhite/anaconda/bin:$PATH
+
+# Set PYTHONPATH to find Anaconda site-packages first
+export PYTHONPATH=/Users/nwhite/anaconda/lib/python2.7/site-packages:$PYTHONPATH
+
+# Add macports to PATH\
+export PATH=$PATH:/opt/local/bin
+
+# Set default Kitchen provider
+#export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
+
+# Hadoop Environment
+export HADOOP_HOME=~/tools/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+
+# Setup Solr in Action book
+export SOLR_IN_ACTION=/Users/nwhite/IntelliJ/solr-in-action
+
+# Nick's Aliases
+alias mvl='mv ~/Downloads/$(ls -tr ~/Downloads | tail -1) .'
+alias cpl='cp ~/Downloads/$(ls -tr ~/Downloads | tail -1) .'
+alias rml='rm ~/Downloads/$(ls -tr ~/Downloads | tail -1)'
+alias 7zl='7z l *support-bundle.zip'
+alias 7zx='7z x *support-bundle.zip'
+alias 7ze='7z e *support-bundle.zip'
+alias entdp='/Users/nwhite/scripts/sfdc/entitlements.py "Data Processing"'
+alias ent='/Users/nwhite/scripts/sfdc/entitlements.py'
+alias goom='/Users/nwhite/scripts/goom.sh'
+
+# Nick's scripts
+export PATH=~/scripts:$PATH
+
+# Nick's functions
+bashman () { man bash | less -p "^       $1 "; }
+
+esolr () { mkdir SOLR ; 7z e -oSOLR *support-bundle.zip "*/logs/*/solr-cmf-*.gz" ;}
+eosolr () { mkdir SOLR ; 7z e -oSOLR *support-bundle.zip "logs/*/solr-cmf-*.gz" ;}
+ezk () { mkdir ZK ; 7z e -oZK *support-bundle.zip "*/logs/*/zookeeper-cmf-*.gz" ;}
+eozk () { mkdir ZK ; 7z e -oZK *support-bundle.zip "logs/*/zookeeper-cmf-*.gz" ;}
+enn () { mkdir NN ; 7z e -oNN *support-bundle.zip "*/logs/*/hadoop-cmf-*NAMENOD*.gz" ;}
+eonn () { mkdir NN ; 7z e -oNN *support-bundle.zip "logs/*/hadoop-cmf-*NAMENOD*.gz" ;}
+enm () { mkdir NM ; 7z e -oNM *support-bundle.zip "*/logs/*/hadoop-cmf-*NODEMAN*.gz" ;}
+eonm () { mkdir NM ; 7z e -oNM *support-bundle.zip "logs/*/hadoop-cmf-*NODEMAN*.gz" ;}
+edn () { mkdir DN ; 7z e -oDN *support-bundle.zip "*/logs/*/hadoop-cmf-*DATANOD*.gz" ;}
+eodn () { mkdir DN ; 7z e -oDN *support-bundle.zip "logs/*/hadoop-cmf-*DATANOD*.gz" ;}
+erm () { mkdir RM ; 7z e -oRM *support-bundle.zip "*/logs/*/hadoop-cmf-*RESOURC*.gz" ;}
+eorm () { mkdir RM ; 7z e -oRM *support-bundle.zip "logs/*/hadoop-cmf-*RESOURC*.gz" ;}
+efl () { mkdir RM ; 7z e -oRM *support-bundle.zip "*/logs/*/flume-cmf-*.gz" ;}
+eofl () { mkdir RM ; 7z e -oRM *support-bundle.zip "logs/*/flume-cmf-*.gz" ;}
+eomm () { mkdir MM ; 7z e -oMM *support-bundle.zip "logs/*/mirrormaker*.gz" ;}
+eok () { mkdir KK ; 7z e -oKK *support-bundle.zip "logs/*/kafka-broker*.gz" ;}
+eoag () { mkdir AG ; 7z x -oAG *support-bundle.zip "scm-agent-logs/*/*" ;}
+eocm () { mkdir CM ; 7z e -oCM *support-bundle.zip "scm-server-logs/*" ;}
+eohi () { mkdir HI ; 7z e -oHI *support-bundle.zip "logs/*/lily-*" ;}
+gsrecov () { egrep "FSHDFSUtils|log replay|publishing|requested|SnapPuller|HdfsDirectory|RecoveryStrategy|DefaultSolrCoreState" $1 ;}
+listreplicas () { egrep -oh "(\w+([-'])(\w+)?[']?(\w+))_shard[0-9]?_replica[0-9]?" $1 | sort -n | uniq;}
+sstarttimes () { grep "No /solr/home in JNDI" $SOLR_LOG_FILE | awk '{print $1, $2}' ;}
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
